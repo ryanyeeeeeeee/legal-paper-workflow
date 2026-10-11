@@ -1,0 +1,4 @@
+interface:
+  display_name: "法学论文写作与修订"
+  short_description: "中文法学论文的论证设计、逐段修订与全文定稿协作流程"
+  default_prompt: "请使用 $legal-paper-workflow，依据当前稿件和已确认意见，从当前阶段推进论文写作或修订，先检查论证，再打磨表达。"

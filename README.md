@@ -1,2 +1,112 @@
-# legal-paper-workflow
-面向中文法学论文的 Codex Skill：论证设计、正文写作、逐段修订、审稿回应与定稿。A Codex skill for Chinese legal academic writing and revision.
+# 法学论文写作与修订
+
+**Legal Paper Workflow** · 面向中文法学论文的 Codex Skill
+
+从研究问题、中心论点和证据出发，协助完成论证设计、正文写作、逐段修订、审稿回应，以及摘要、引言和结语的统一。
+
+这套方法提炼自持续的论文共同修订实践。它重视每一部分如何推进论证、材料能够支持多强的判断，以及已经讨论、确认、写入和核验的内容能否对应起来。每篇论文都从自身的问题和材料出发。
+
+## 适合哪些任务
+
+| 当前任务 | 主要帮助 |
+| --- | --- |
+| 新论文构思 | 明确研究问题、讨论对象、中心论点、论据与贡献 |
+| 结构与正文写作 | 分配章节和段落任务，解释关键机制，减少结构性重复 |
+| 逐段共同修订 | 修复句段承接、主体指代和论证断点，打磨中文法学表达 |
+| 按审稿意见修改 | 依据已接受意见推进，区分必须修复与可选润色，核对意见是否解决 |
+| 摘要、引言与结语 | 对齐问题、论点、证据与贡献，避免超出正文的概括 |
+| 定稿与文件交付 | 核对版本和写回状态，按实际任务检查脚注、样式与渲染页 |
+
+默认采用中文法学论文文体，也可依其他学科的证据和论证方式调整。它是一套写作与修订方法；文献检索、DOCX 编辑和页面渲染由使用环境提供相应工具。
+
+## 在 Codex 中安装
+
+将下面这段话发给 Codex：
+
+```text
+请使用 $skill-installer，从 GitHub 仓库
+https://github.com/ryanyeeeeeeee/legal-paper-workflow
+安装根目录中的 skill，安装名称为 legal-paper-workflow。
+```
+
+如果使用本地 Codex 自带的安装脚本，也可以运行：
+
+```bash
+python3 "${CODEX_HOME:-$HOME/.codex}/skills/.system/skill-installer/scripts/install-skill-from-github.py" \
+  --repo ryanyeeeeeeee/legal-paper-workflow \
+  --path . \
+  --name legal-paper-workflow
+```
+
+安装完成后，在下一轮对话中使用 `$legal-paper-workflow`。如果已安装同名 skill，先让 Codex 比较现有版本与仓库版本，再决定是否更新。
+
+使用其他支持 `SKILL.md` 的工具时，保留整个目录结构，并按该工具的说明安装。仓库提供 Codex 的界面元数据；其他工具的识别与调用方式以其自身支持情况为准。
+
+## 使用示例
+
+### 梳理论文主线
+
+```text
+请使用 $legal-paper-workflow，根据我提供的选题、材料和现有提纲，
+梳理研究问题、讨论对象、中心论点、主要依据与贡献。
+先判断各章分别完成什么论证任务，再提出结构调整建议。
+```
+
+### 逐段修改正文
+
+```text
+请使用 $legal-paper-workflow，修改下面这一段，并结合前后段检查承接。
+先判断它承担什么论证任务，再给一个推荐修订稿，简要解释实质变化。
+保留必要的因果分析和适用条件，不改变已经确认的研究主线。
+```
+
+### 按审稿意见续改
+
+```text
+请使用 $legal-paper-workflow，依据当前稿件和已经接受的审稿意见继续修订。
+本轮只处理第二章的内容问题，摘要和脚注留待下一轮。
+完成后说明原意见如何得到解决，以及哪些改动已经写入文件。
+```
+
+### 统一摘要、引言与结语
+
+```text
+请使用 $legal-paper-workflow，检查摘要、引言和结语是否围绕同一问题与论点。
+先核对正文实际证明了什么，再修改三者之间的重复、跳跃或过度概括。
+```
+
+## 核心工作方式
+
+1. **从当前阶段进入。** 读取本轮需要的材料，沿用已确认意见与任务范围。
+2. **先判断论证，再处理表达。** 明确章节与段落的任务，检查结论所需的中间机制。
+3. **让证据限定判断。** 区分事实、推论和规范建议，准确处理主体、权利对象与阶段。
+4. **把修改放回上下文。** 每次替换都检查相邻段落和句子之间的逻辑关系。
+5. **让修订形成闭合。** 记录实质问题如何解决，区分建议、确认、写入与核验。
+
+## 文件结构
+
+```text
+legal-paper-workflow/
+├── SKILL.md
+├── agents/
+│   └── openai.yaml
+└── references/
+    ├── argument-and-paragraphs.md
+    ├── abstract-introduction-conclusion.md
+    └── review-and-delivery.md
+```
+
+- [SKILL.md](SKILL.md)：入口、适用范围和可缩放的工作流程。
+- [论证与句段修订](references/argument-and-paragraphs.md)：结构分工、机制分析与句段承接。
+- [摘要、引言与结语](references/abstract-introduction-conclusion.md)：问题、论点、贡献和首尾统一。
+- [审稿与交付](references/review-and-delivery.md)：审稿意见、版本状态、文件写回和完成判断。
+
+## 维护
+
+由 [ryanyeeeeeeee](https://github.com/ryanyeeeeeeee) 整理，Codex 辅助提炼与编写。
+
+欢迎通过 Issues 提出具体使用反馈：说明任务类型、出现的问题和期待的行为；举例时请使用可公开的材料。
+
+## 许可证
+
+采用 [MIT 许可证](LICENSE)。允许使用、修改和再分发，包括商业使用；请保留版权及许可声明。
